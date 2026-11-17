@@ -8,7 +8,7 @@ It covers every question in the assignment:
 - How it works, with an animated cutaway diagram and a photo of a real machine
 - Life before the invention, and the improvements it brought
 - The market, the impact on people, and its place in the Industrial Revolution
-- The ask: $250,000 for 20% of Arkwright & Co.
+- The ask: $850,000 for 3% of Arkwright & Co.
 - Practice answers for questions the sharks might ask
 
 ## Open it
