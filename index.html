@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Arkwright's Water Frame</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dusk scene of a stone cotton mill opens the page; below it, one section per pitch question on cool cotton paper, with lamp-lit "inside the mill" panels for the machine. */
+:root {
+  --paper: #ECEFEE;
+  --surface: #F7F8F7;
+  --ink: #161D22;
+  --muted: #536069;
+  --rule: #C8D0D2;
+  --river: #22607A;
+  --river-soft: #D6E4EA;
+  --brass: #94661E;
+  --brass-soft: #F0E5D0;
+  --wood: #7A5431;
+  --cotton: #FBFAF6;
+  --cotton-shade: #D9D3C6;
+  --display: "IM Fell English", "Iowan Old Style", Georgia, serif;
+  --display-sc: "IM Fell English SC", "IM Fell English", Georgia, serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1519; --surface: #151F25; --ink: #E5EAEC; --muted: #98A6AE; --rule: #27353D;
+    --river: #6EB4CF; --river-soft: #163240; --brass: #D8A458; --brass-soft: #30261A;
+    --wood: #9C6E44; --cotton: #F2EFE7; --cotton-shade: #BDB5A6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1519; --surface: #151F25; --ink: #E5EAEC; --muted: #98A6AE; --rule: #27353D;
+  --river: #6EB4CF; --river-soft: #163240; --brass: #D8A458; --brass-soft: #30261A;
+  --wood: #9C6E44; --cotton: #F2EFE7; --cotton-shade: #BDB5A6;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: #0f1a24; }
+a { color: var(--river); }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- nav (sits on the dark scene) ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(13, 22, 31, .86); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08); }
+.nav .wrap { display: flex; gap: 22px; align-items: center; padding-block: 11px; overflow-x: auto; scrollbar-width: none; }
+.nav .wrap::-webkit-scrollbar { display: none; }
+.nav .brand { font-family: var(--display-sc); font-size: 20px; color: #F3E7D2; text-decoration: none; white-space: nowrap; margin-right: auto; }
+.nav a.l { font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #B9C3C9; text-decoration: none; white-space: nowrap; }
+.nav a.l:hover { color: #F2C27A; }
+
+/* ---------- hero scene ---------- */
+.hero { position: relative; height: clamp(540px, 60vw, 760px); overflow: hidden; background: #0f1a24; color: #F5EDE0; }
+.hero svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(9,15,21,.82) 0%, rgba(9,15,21,.45) 42%, rgba(9,15,21,0) 70%), linear-gradient(0deg, rgba(9,15,21,.7) 0%, rgba(9,15,21,0) 40%); }
+.hero .copy { position: absolute; inset: auto 0 0 0; padding-block: 0 48px; }
+.patent { font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: #F2C27A; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(58px, 9.5vw, 128px); line-height: .9; margin: 12px 0 18px; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,.45); }
+h1 em { color: #F2C27A; }
+.lede { font-size: clamp(17px, 2vw, 21px); max-width: 32ch; color: #D9DEE0; margin: 0 0 26px; }
+.lede strong { color: #fff; font-weight: 600; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 14px 34px; }
+.hero-stats b { display: block; font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.hero-stats span { font-size: 13px; color: #B9C3C9; }
+
+/* motion */
+.spin { transform-box: fill-box; transform-origin: center; animation: rot 14s linear infinite reverse; }
+.spin.cw { animation-direction: normal; }
+.spin.s6 { animation-duration: 6s; } .spin.s4 { animation-duration: 4s; } .spin.s3 { animation-duration: 3s; } .spin.s2 { animation-duration: 2s; }
+.twirl { transform-box: fill-box; transform-origin: center; animation: twirl .7s linear infinite; }
+.flow { stroke-dasharray: 26 18; animation: flow 2.2s linear infinite; }
+.flicker { animation: flicker 5s ease-in-out infinite alternate; }
+@keyframes rot { to { transform: rotate(360deg); } }
+@keyframes twirl { 0% { transform: scaleX(1); } 50% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
+@keyframes flow { to { stroke-dashoffset: -88; } }
+@keyframes flicker { from { opacity: .95; } to { opacity: .7; } }
+.paused .spin, .paused .flow, .paused .twirl { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .spin, .flow, .twirl, .flicker { animation: none; } }
+
+/* ---------- sections ---------- */
+section.part { padding-block: 72px; border-top: 1px solid var(--rule); scroll-margin-top: 54px; }
+.eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--brass); margin: 0 0 8px; }
+h2 { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 5.4vw, 58px); line-height: 1.02; margin: 0 0 18px; text-wrap: balance; }
+h3 { font-weight: 700; font-size: 18px; margin: 0 0 6px; }
+p { margin: 0 0 14px; }
+.prose { max-width: 66ch; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 40px; }
+.cols > div { min-width: 0; border-top: 2px solid var(--ink); padding-top: 14px; }
+.cols p { color: var(--muted); font-size: 16px; margin: 0; }
+.say { margin-top: 30px; padding: 16px 20px; border-left: 3px solid var(--brass); background: var(--brass-soft); font-family: var(--display); font-style: italic; font-size: 22px; line-height: 1.4; max-width: 62ch; }
+.say small { display: block; font-family: var(--mono); font-style: normal; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--brass); margin-bottom: 4px; }
+
+/* inventor: engraved plate */
+.inventor { display: grid; grid-template-columns: 330px 1fr; gap: 48px; align-items: start; }
+.inventor > div { min-width: 0; }
+.plate { background: var(--surface); border: 1px solid var(--ink); outline: 1px solid var(--ink); outline-offset: -7px; padding: 26px 24px; position: relative; }
+.portrait { margin: 0 0 18px; }
+.portrait img { display: block; width: 100%; height: auto; border: 1px solid var(--ink); }
+figcaption { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+figcaption a { color: inherit; }
+.photo { margin: 34px 0 0; display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: center; }
+.photo > * { min-width: 0; }
+.photo img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 18px 40px -26px rgba(0,0,0,.6); }
+.photo h3 { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.1; margin-bottom: 10px; }
+.photo ul { margin: 0 0 12px; padding-left: 20px; color: var(--muted); font-size: 15.5px; }
+.photo li { margin-bottom: 6px; }
+.wide { margin: 34px 0 0; }
+.wide img { display: block; width: 100%; height: auto; border-radius: 4px; }
+@media (max-width: 860px) { .photo { grid-template-columns: 1fr; } }
+.plate .name { font-family: var(--display-sc); font-size: 28px; line-height: 1.1; text-align: center; margin: 0; }
+.plate .sub { text-align: center; color: var(--muted); font-size: 13.5px; margin: 4px 0 18px; font-style: italic; font-family: var(--display); font-size: 17px; }
+.plate dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 9px 16px; font-size: 15px; border-top: 1px solid var(--rule); padding-top: 16px; }
+.plate dt { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding-top: 3px; }
+.plate dd { margin: 0; }
+
+/* before / after */
+.ba { display: grid; grid-template-columns: 1fr 1fr; margin-top: 30px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.ba > div { padding: 26px; min-width: 0; }
+.ba .before { background: var(--surface); }
+.ba .after { background: var(--river-soft); }
+.ba h3 { font-family: var(--display-sc); font-weight: 400; font-size: 26px; }
+.ba ul { margin: 8px 0 0; padding-left: 20px; }
+.ba li { margin-bottom: 8px; }
+
+/* diagram: lamp-lit mill interior, one fixed look in both themes */
+.diagram { margin-top: 30px; background: #17130F; border-radius: 6px; overflow: hidden; box-shadow: 0 18px 40px -24px rgba(0,0,0,.6); }
+.diagram-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.diagram-bar span { font-family: var(--mono); font-size: 12px; color: #B9AE9C; letter-spacing: .08em; text-transform: uppercase; }
+.diagram-scroll { overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.diagram svg text { font-family: var(--body); }
+.toggle { font: 600 13px var(--body); letter-spacing: .05em; text-transform: uppercase; background: #F2C27A; color: #1A140D; border: 0; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.toggle:hover { filter: brightness(1.06); }
+.toggle.alt { background: var(--river); color: var(--paper); }
+.steps { list-style: none; padding: 0; margin: 30px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 22px; counter-reset: s; }
+.steps li { counter-increment: s; min-width: 0; font-size: 15px; color: var(--muted); }
+.steps li::before { content: counter(s); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brass); color: var(--paper); font: 600 14px var(--mono); margin-bottom: 8px; }
+.steps b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 2px; }
+
+/* spindle race: real bobbins filling with thread */
+.race { margin-top: 32px; display: grid; grid-template-columns: 230px 1fr; gap: 24px; }
+.lane { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 20px; min-width: 0; }
+.lane h3 { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.lane h3 span { font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--muted); }
+.rack { display: grid; grid-template-columns: repeat(16, 1fr); gap: 10px 6px; margin-top: 16px; padding: 12px 8px 0; border-bottom: 6px solid var(--wood); }
+.rack.one { grid-template-columns: 26px; }
+.bob { position: relative; height: 44px; }
+.bob::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); background: var(--muted); }
+.bob i { position: absolute; left: 50%; transform: translateX(-50%); width: 14px; height: 4px; background: var(--wood); border-radius: 1px; }
+.bob i.t { top: 8px; } .bob i.b { bottom: 4px; }
+.bob u { position: absolute; left: 50%; transform: translateX(-50%); bottom: 8px; width: 11px; height: 0; border-radius: 3px; background: repeating-linear-gradient(0deg, var(--cotton) 0 2px, var(--cotton-shade) 2px 3px); box-shadow: inset -2px 0 0 rgba(0,0,0,.12); transition: height .9s ease-out; }
+.bob.on u { height: 28px; }
+.count { font-family: var(--display); font-size: 50px; line-height: 1; margin-top: 16px; font-variant-numeric: tabular-nums; }
+.count small { font-family: var(--body); font-size: 14px; color: var(--muted); margin-left: 6px; }
+.race-ctrl { margin-top: 16px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.race-ctrl p { margin: 0; font-size: 14px; color: var(--muted); }
+
+/* market */
+.market { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 30px; border-top: 2px solid var(--ink); }
+.market > div { padding: 20px 22px 20px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
+.market .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--river); }
+.market h3 { font-family: var(--display); font-weight: 400; font-size: 27px; margin: 4px 0 6px; }
+.market p { font-size: 15px; color: var(--muted); margin: 0; }
+
+/* impact */
+.impact { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; margin-top: 30px; align-items: start; }
+.impact > div { min-width: 0; }
+.plus { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.plus li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; }
+.plus li::before { content: "+"; font: 600 20px/1.2 var(--mono); color: var(--river); }
+.plus b { display: block; }
+.plus span { color: var(--muted); font-size: 15px; }
+.fine { background: var(--surface); border: 1px dashed var(--rule); border-radius: 4px; padding: 20px; font-size: 14px; color: var(--muted); }
+.fine h3 { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.fine p { margin: 0; }
+
+/* timeline */
+.timeline-scroll { overflow-x: auto; margin-top: 34px; padding-bottom: 6px; }
+.timeline { position: relative; min-width: 780px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; padding-top: 30px; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 13px; height: 2px; background: var(--rule); }
+.ev { position: relative; font-size: 14px; color: var(--muted); }
+.ev::before { content: ""; position: absolute; top: -23px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--muted); }
+.ev b { display: block; font-family: var(--mono); font-size: 14px; color: var(--ink); }
+.ev.us::before { background: var(--brass); border-color: var(--brass); width: 16px; height: 16px; top: -25px; }
+.ev.us, .ev.us b { color: var(--brass); font-weight: 600; }
+
+/* ask: share certificate */
+.cert { margin-top: 30px; background: var(--surface); border: 6px double var(--brass); padding: clamp(20px, 4vw, 44px); position: relative;
+  background-image: repeating-radial-gradient(circle at 50% 120%, transparent 0 9px, color-mix(in srgb, var(--brass) 7%, transparent) 9px 10px); }
+.cert-head { text-align: center; border-bottom: 1px solid var(--rule); padding-bottom: 18px; margin-bottom: 26px; }
+.cert-head .k { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+.cert-head .t { font-family: var(--display-sc); font-size: clamp(26px, 3.6vw, 38px); line-height: 1.1; margin-top: 4px; }
+.cert-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.cert-body > div { min-width: 0; }
+.big { font-family: var(--display); font-size: clamp(60px, 9vw, 104px); line-height: .95; color: var(--river); }
+.for { font-family: var(--display); font-style: italic; font-size: 25px; margin: 6px 0 14px; }
+.cert p { color: var(--muted); font-size: 15px; }
+.bars { display: grid; gap: 14px; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: 14px; }
+.bar-row .track { grid-column: 1 / -1; height: 8px; background: var(--rule); border-radius: 4px; overflow: hidden; }
+.bar-row .fill { height: 100%; background: var(--river); border-radius: 4px; }
+.bar-row b { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+.seal { position: absolute; right: clamp(14px, 3vw, 34px); bottom: -34px; width: 92px; height: 92px; }
+
+/* Q&A */
+.qa { margin-top: 28px; display: grid; gap: 10px; max-width: 820px; }
+details { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 15px 18px; }
+summary { cursor: pointer; font-weight: 600; font-size: 16px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--mono); color: var(--brass); }
+details[open] summary::after { content: "\2212"; }
+details p { margin: 10px 0 0; color: var(--muted); font-size: 15px; }
+
+footer { border-top: 1px solid var(--rule); padding-block: 28px 48px; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (max-width: 860px) {
+  .inventor, .ba, .race, .impact, .cert-body { grid-template-columns: 1fr; }
+  .hero .shade { background: linear-gradient(0deg, rgba(9,15,21,.92) 0%, rgba(9,15,21,.6) 45%, rgba(9,15,21,.1) 80%); }
+  .hero .copy { padding-block: 0 30px; }
+  .rack { grid-template-columns: repeat(12, 1fr); }
+  .rack.one { grid-template-columns: 26px; }
+  section.part { padding-block: 52px; }
+  .seal { display: none; }
+}
+</style>
+
+<nav class="nav" aria-label="Pitch sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Arkwright &amp; Co.</a>
+    <a class="l" href="#inventor">Inventor</a>
+    <a class="l" href="#before">Before</a>
+    <a class="l" href="#how">How it works</a>
+    <a class="l" href="#gains">Improvements</a>
+    <a class="l" href="#market">Market</a>
+    <a class="l" href="#impact">Impact</a>
+    <a class="l" href="#revolution">Industrial Rev.</a>
+    <a class="l" href="#ask">The Ask</a>
+    <a class="l" href="#questions">Q&amp;A</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="scene" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0D1824"/><stop offset=".45" stop-color="#2E3D52"/>
+        <stop offset=".72" stop-color="#8C6253"/><stop offset=".86" stop-color="#D99561"/><stop offset="1" stop-color="#E9B27A"/>
+      </linearGradient>
+      <radialGradient id="hSun" cx="1180" cy="470" r="420" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFD39A" stop-opacity=".75"/><stop offset="1" stop-color="#FFD39A" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="hStone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6E6458"/><stop offset="1" stop-color="#3F3933"/>
+      </linearGradient>
+      <linearGradient id="hStoneSide" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4E463E"/><stop offset="1" stop-color="#2C2824"/>
+      </linearGradient>
+      <linearGradient id="hRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3F47"/><stop offset="1" stop-color="#22262C"/></linearGradient>
+      <linearGradient id="hWater" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5A5258"/><stop offset=".25" stop-color="#2D3A46"/><stop offset="1" stop-color="#0C141A"/>
+      </linearGradient>
+      <linearGradient id="hWood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B3E25"/><stop offset="1" stop-color="#2E1F12"/></linearGradient>
+      <pattern id="hCourses" width="40" height="14" patternUnits="userSpaceOnUse">
+        <path d="M0 13.5 H40 M20 0 V7 M0 7 H40 M5 7 V14" stroke="#000" stroke-opacity=".18" stroke-width="1" fill="none"/>
+      </pattern>
+      <filter id="hGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+      <filter id="hSoft"><feGaussianBlur stdDeviation="2.5"/></filter>
+    </defs>
+
+    <rect width="1600" height="720" fill="url(#hSky)"/>
+    <rect width="1600" height="720" fill="url(#hSun)"/>
+    <!-- a few stars -->
+    <g fill="#fff" opacity=".6">
+      <circle cx="140" cy="60" r="1.2"/><circle cx="320" cy="120" r="1"/><circle cx="520" cy="44" r="1.3"/><circle cx="760" cy="96" r="1"/>
+      <circle cx="980" cy="38" r="1.1"/><circle cx="1240" cy="80" r="1"/><circle cx="1460" cy="52" r="1.2"/>
+    </g>
+    <!-- hills -->
+    <path d="M0 420 C160 360 330 392 520 356 C700 322 860 370 1040 342 C1230 312 1400 360 1600 330 V720 H0Z" fill="#33414A" opacity=".85"/>
+    <path d="M0 470 C220 420 420 460 640 432 C880 402 1120 450 1360 420 C1480 406 1550 418 1600 412 V720 H0Z" fill="#202D33"/>
+    <!-- tree line -->
+    <g fill="#141E23">
+      <circle cx="40" cy="470" r="46"/><circle cx="110" cy="452" r="58"/><circle cx="190" cy="470" r="44"/><circle cx="260" cy="448" r="54"/>
+      <circle cx="340" cy="472" r="42"/><circle cx="410" cy="458" r="50"/><circle cx="480" cy="480" r="38"/><circle cx="1450" cy="470" r="48"/>
+      <circle cx="1520" cy="452" r="60"/><circle cx="1590" cy="470" r="46"/><rect x="0" y="470" width="560" height="120"/><rect x="1400" y="470" width="200" height="120"/>
+    </g>
+
+    <!-- the mill: five storeys of stone -->
+    <polygon points="1380,262 1440,248 1440,566 1380,566" fill="url(#hStoneSide)"/>
+    <rect x="820" y="262" width="560" height="304" fill="url(#hStone)"/>
+    <rect x="820" y="262" width="560" height="304" fill="url(#hCourses)"/>
+    <polygon points="806,264 1394,264 1366,222 834,222" fill="url(#hRoof)"/>
+    <polygon points="1394,264 1440,250 1418,212 1366,222" fill="#1A1D22"/>
+    <!-- bell cupola -->
+    <rect x="1086" y="190" width="28" height="34" fill="#4A433C"/>
+    <polygon points="1080,192 1120,192 1100,170" fill="#22262C"/>
+    <rect x="1094" y="198" width="12" height="16" fill="#F3B862" class="flicker"/>
+    <g id="heroWindows"></g>
+    <!-- doorway -->
+    <rect x="1088" y="520" width="26" height="46" fill="#1B1714"/>
+
+    <!-- wheel pit wall -->
+    <rect x="740" y="380" width="80" height="200" fill="url(#hStoneSide)"/>
+    <rect x="740" y="380" width="80" height="200" fill="url(#hCourses)"/>
+
+    <!-- water wheel -->
+    <g class="spin" id="heroWheel"></g>
+    <circle cx="660" cy="510" r="14" fill="#1A120A"/>
+    <rect x="660" y="505" width="90" height="10" fill="#2A2522"/>
+
+    <!-- bank -->
+    <path d="M440 590 C600 572 800 566 1000 566 C1200 566 1400 572 1600 582 V600 H440Z" fill="#161E21"/>
+    <!-- river -->
+    <rect x="0" y="588" width="1600" height="132" fill="url(#hWater)"/>
+    <g id="heroReflect" filter="url(#hSoft)" opacity=".45"></g>
+    <path d="M500 608 C540 604 620 604 760 610" stroke="#E9F2F5" stroke-opacity=".5" stroke-width="3" fill="none" class="flow"/>
+    <g stroke="#CFE0E8" stroke-opacity=".22" stroke-width="2" fill="none" stroke-linecap="round" class="flow">
+      <path d="M0 620 H1600"/><path d="M0 646 H1600"/><path d="M0 676 H1600"/><path d="M0 704 H1600"/>
+    </g>
+  </svg>
+  <div class="shade"></div>
+  <div class="copy">
+    <div class="wrap">
+      <div class="patent">Patent granted 3 July 1769 &middot; Richard Arkwright</div>
+      <h1>The <em>Water</em> Frame</h1>
+      <p class="lede">What if a river could spin your thread? <strong>One water wheel. Dozens of spindles. Thread that never stops coming.</strong></p>
+      <div class="hero-stats">
+        <div><b>96</b><span>threads spun at once</span></div>
+        <div><b>1</b><span>thread on a hand wheel</span></div>
+        <div><b>0</b><span>skilled spinners needed</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="part" id="inventor">
+    <div class="wrap inventor">
+      <div class="plate">
+        <figure class="portrait">
+          <img src="img/arkwright-portrait.jpg" alt="Oil portrait of Sir Richard Arkwright in a dark coat and white wig" width="636" height="800">
+          <figcaption>Painted by Joseph Wright of Derby, 1789–90. National Portrait Gallery, London.</figcaption>
+        </figure>
+        <p class="name">Sir Richard Arkwright</p>
+        <p class="sub">1732 – 1792, of Preston, Lancashire</p>
+        <dl>
+          <dt>Started as</dt><dd>A barber and wig-maker</dd>
+          <dt>Partner</dt><dd>John Kay, a clockmaker who built the first models</dd>
+          <dt>Patent</dt><dd>1769, a spinning machine using rollers</dd>
+          <dt>First mill</dt><dd>Nottingham, 1769, horse-powered</dd>
+          <dt>Big mill</dt><dd>Cromford, Derbyshire, 1771, on the River Derwent</dd>
+          <dt>Honour</dt><dd>Knighted in 1786</dd>
+        </dl>
+      </div>
+      <div>
+        <p class="eyebrow">Who made it real</p>
+        <h2>A wig-maker who saw a better way to make thread</h2>
+        <div class="prose">
+          <p>Richard Arkwright cut hair and made wigs for a living. Travelling around Lancashire, he heard spinners and weavers complain about the same thing again and again: there was never enough thread.</p>
+          <p>He teamed up with clockmaker John Kay, who knew how to build precise gears. Together they built a frame that pulled cotton thin with rollers and twisted it on spindles. It was too heavy to turn by hand, so Arkwright hooked it up to a water wheel. That is where the name comes from.</p>
+          <p>Arkwright was more than an inventor. He was a businessman. He built the mill, hired the workers, and organized everything around his machine. Historians call him the father of the modern factory system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="before">
+    <div class="wrap">
+      <p class="eyebrow">Life before the water frame</p>
+      <h2>Spinning was slow, weak, and done by hand at home</h2>
+      <p class="prose">Before 1769, almost all thread was spun in cottages. Merchants dropped off raw cotton and came back days later for the finished yarn. This was called the <b>putting-out</b> or <b>domestic system</b>.</p>
+      <div class="ba">
+        <div class="before">
+          <h3>Before</h3>
+          <ul>
+            <li>One spinner at a spinning wheel makes <b>one thread</b> at a time.</li>
+            <li>The flying shuttle (1733) made weaving faster, so weavers sat idle waiting for thread.</li>
+            <li>Hand-spun cotton was too weak for the <b>warp</b> (the lengthwise threads), so cloth needed linen mixed in.</li>
+            <li>The spinning jenny helped, but its thread was soft and it still needed a person turning a handle.</li>
+            <li>Quality changed from spinner to spinner.</li>
+          </ul>
+        </div>
+        <div class="after">
+          <h3>After</h3>
+          <ul>
+            <li>One water wheel powers frames spinning <b>dozens of threads</b> at the same time.</li>
+            <li>Weavers finally get all the thread they can use.</li>
+            <li>The thread is <b>strong enough for warp</b>, so cloth can be 100% cotton.</li>
+            <li>The river does the hard work. Workers watch, mend, and refill.</li>
+            <li>Every thread comes out even and the same.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="how">
+    <div class="wrap">
+      <p class="eyebrow">Function &amp; how it works</p>
+      <h2>Stretch it, twist it, wind it. The river does the rest.</h2>
+      <p class="prose">The water frame turns loose cotton fibres (called <b>roving</b>) into strong, tight thread. Its big idea is <b>drafting rollers</b>: pairs of rollers that each spin faster than the pair before, so the cotton gets pulled thinner and thinner.</p>
+
+      <div class="diagram" id="diagram">
+        <div class="diagram-bar">
+          <span>Cutaway &middot; one spinning head, side view</span>
+          <button class="toggle" type="button" id="diagramToggle" aria-pressed="false">Stop the river</button>
+        </div>
+        <div class="diagram-scroll">
+          <svg viewBox="0 0 1000 540" role="img" aria-label="Cutaway drawing: the river turns a wooden water wheel outside the mill wall. Its axle turns gears inside, which drive belts to the drafting rollers and the spindle. Cotton roving unwinds from a bobbin, is stretched by three roller pairs held down by weights, then twisted by the flyer and wound onto a bobbin.">
+            <defs>
+              <linearGradient id="dNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F1A24"/><stop offset="1" stop-color="#253442"/></linearGradient>
+              <radialGradient id="dLamp" cx="780" cy="160" r="520" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4A3A28"/><stop offset=".55" stop-color="#2A221A"/><stop offset="1" stop-color="#17130F"/>
+              </radialGradient>
+              <linearGradient id="dWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B6378"/><stop offset="1" stop-color="#132631"/></linearGradient>
+              <linearGradient id="dStone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5E564C"/><stop offset=".5" stop-color="#7A7064"/><stop offset="1" stop-color="#4A433B"/></linearGradient>
+              <pattern id="dCourses" width="40" height="22" patternUnits="userSpaceOnUse">
+                <path d="M0 21.5 H40 M0 11 H40 M14 0 V11 M30 11 V22" stroke="#000" stroke-opacity=".28" fill="none"/>
+              </pattern>
+              <linearGradient id="dWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9A6B3E"/><stop offset=".5" stop-color="#7A5230"/><stop offset="1" stop-color="#5A3B21"/></linearGradient>
+              <linearGradient id="dWoodV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5A3B21"/><stop offset=".45" stop-color="#93653A"/><stop offset="1" stop-color="#5A3B21"/></linearGradient>
+              <pattern id="dGrain" width="60" height="9" patternUnits="userSpaceOnUse">
+                <path d="M0 3 C15 1 30 5 60 3 M0 7 C20 9 40 5 60 7" stroke="#2C1B0E" stroke-opacity=".35" fill="none"/>
+              </pattern>
+              <radialGradient id="dIron" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#C9CED2"/><stop offset=".55" stop-color="#7C8489"/><stop offset="1" stop-color="#3A3F43"/></radialGradient>
+              <radialGradient id="dLeather" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#B98A5A"/><stop offset="1" stop-color="#5B3A1E"/></radialGradient>
+              <linearGradient id="dBrass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9C47E"/><stop offset=".5" stop-color="#B0863F"/><stop offset="1" stop-color="#6E4F1E"/></linearGradient>
+              <linearGradient id="dCotton" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#CFC7B8"/><stop offset=".45" stop-color="#FFFDF8"/><stop offset="1" stop-color="#BDB4A3"/></linearGradient>
+              <pattern id="dThread" width="6" height="3" patternUnits="userSpaceOnUse"><rect width="6" height="3" fill="#F4EFE4"/><path d="M0 2.5 H6" stroke="#B8AE9C" stroke-width=".8"/></pattern>
+              <filter id="dFluff" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+              <filter id="dShadow" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity=".5"/></filter>
+            </defs>
+
+            <!-- outside: night and river -->
+            <rect x="0" y="0" width="360" height="540" fill="url(#dNight)"/>
+            <rect x="0" y="446" width="360" height="94" fill="url(#dWater)"/>
+            <g stroke="#CFE6F0" stroke-opacity=".35" stroke-width="2" fill="none" stroke-linecap="round" class="flow">
+              <path d="M0 470 H360"/><path d="M0 494 H360"/><path d="M0 518 H360"/>
+            </g>
+            <text x="16" y="530" font-size="12" fill="#9FC3D3" font-style="italic">River Derwent, flowing →</text>
+
+            <!-- inside: lamp-lit room -->
+            <rect x="360" y="0" width="640" height="540" fill="url(#dLamp)"/>
+            <rect x="380" y="476" width="620" height="64" fill="#2B2219"/>
+            <g stroke="#140F0B" stroke-opacity=".7"><path d="M380 476 H1000 M380 500 H1000 M380 522 H1000"/></g>
+
+            <!-- mill wall -->
+            <rect x="340" y="0" width="44" height="540" fill="url(#dStone)"/>
+            <rect x="340" y="0" width="44" height="540" fill="url(#dCourses)"/>
+            <text x="362" y="22" font-size="10.5" fill="#E9DFC9" text-anchor="middle" letter-spacing="1.5">WALL</text>
+
+            <!-- axle through the wall -->
+            <rect x="170" y="293" width="306" height="14" rx="3" fill="url(#dIron)"/>
+
+            <!-- water wheel -->
+            <g class="spin" id="dWheel" filter="url(#dShadow)"></g>
+            <circle cx="170" cy="300" r="12" fill="url(#dIron)" stroke="#222" stroke-width="2"/>
+
+            <!-- gears -->
+            <g class="spin" id="dPit"></g>
+            <g class="spin cw s4" id="dPinion"></g>
+            <circle cx="476" cy="300" r="8" fill="#2A2522"/><circle cx="560" cy="300" r="6" fill="#2A2522"/>
+
+            <!-- belt pinion -> drum -->
+            <path d="M548 312 L684 436 M572 290 L726 404" stroke="#3A2614" stroke-width="5" fill="none"/>
+            <g class="spin cw s3" id="dDrum"></g>
+            <!-- tape drum -> spindle whorl -->
+            <path d="M706 394 L905 422 M706 446 L905 440" stroke="#D8CDB6" stroke-opacity=".8" stroke-width="2.2" fill="none"/>
+            <!-- rod to roller gearing -->
+            <path d="M706 394 L724 252" stroke="url(#dIron)" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- timber frame -->
+            <g filter="url(#dShadow)">
+              <rect x="600" y="56" width="22" height="420" fill="url(#dWoodV)"/>
+              <rect x="948" y="56" width="22" height="420" fill="url(#dWoodV)"/>
+              <rect x="592" y="52" width="386" height="20" fill="url(#dWood)"/><rect x="592" y="52" width="386" height="20" fill="url(#dGrain)"/>
+              <rect x="614" y="246" width="342" height="16" fill="url(#dWood)"/><rect x="614" y="246" width="342" height="16" fill="url(#dGrain)"/>
+              <rect x="592" y="452" width="386" height="24" fill="url(#dWood)"/><rect x="592" y="452" width="386" height="24" fill="url(#dGrain)"/>
+            </g>
+
+            <!-- roving bobbin on the creel -->
+            <line x1="662" y1="72" x2="662" y2="184" stroke="url(#dIron)" stroke-width="4"/>
+            <rect x="646" y="88" width="32" height="6" rx="1" fill="url(#dWood)"/>
+            <rect x="646" y="172" width="32" height="6" rx="1" fill="url(#dWood)"/>
+            <rect x="648" y="93" width="28" height="80" rx="9" fill="url(#dCotton)"/>
+            <g stroke="#B5AB98" stroke-opacity=".6" fill="none"><path d="M650 110 H674 M650 128 H674 M650 146 H674 M650 162 H674"/></g>
+
+            <!-- cotton path, thick to thin -->
+            <g stroke="#FFFDF7" fill="none" stroke-linecap="round">
+              <path d="M672 132 C690 150 700 196 712 219" stroke-width="13" opacity=".55" filter="url(#dFluff)"/>
+              <path d="M672 132 C690 150 700 196 712 219" stroke-width="7"/>
+              <path d="M712 219 H790" stroke-width="9" opacity=".5" filter="url(#dFluff)"/>
+              <path d="M712 219 H790" stroke-width="5.5"/>
+              <path d="M790 219 H862" stroke-width="3.5"/>
+              <path d="M862 219 C884 236 900 262 905 288" stroke-width="1.6"/>
+            </g>
+
+            <!-- roller pairs: leather-covered top, fluted iron bottom -->
+            <g id="dRollers"></g>
+            <!-- weights -->
+            <g stroke="#9C9282" stroke-width="1.4">
+              <line x1="736" y1="206" x2="736" y2="300"/><line x1="806" y1="206" x2="806" y2="300"/><line x1="876" y1="206" x2="876" y2="300"/>
+            </g>
+            <g fill="url(#dIron)" stroke="#222" stroke-width="1">
+              <rect x="728" y="298" width="16" height="26" rx="2"/><rect x="798" y="298" width="16" height="26" rx="2"/><rect x="868" y="298" width="16" height="26" rx="2"/>
+            </g>
+            <text x="720" y="276" font-size="12" fill="#C9BBA2" text-anchor="middle">slow</text>
+            <text x="790" y="276" font-size="12" fill="#C9BBA2" text-anchor="middle">faster</text>
+            <text x="860" y="276" font-size="12" fill="#C9BBA2" text-anchor="middle">fastest</text>
+
+            <!-- spindle, bobbin, flyer -->
+            <line x1="905" y1="284" x2="905" y2="446" stroke="url(#dIron)" stroke-width="4"/>
+            <rect x="887" y="314" width="36" height="6" rx="1" fill="url(#dWood)"/>
+            <rect x="887" y="392" width="36" height="6" rx="1" fill="url(#dWood)"/>
+            <rect x="890" y="319" width="30" height="74" rx="4" fill="url(#dThread)"/>
+            <rect x="890" y="319" width="30" height="74" rx="4" fill="url(#dCotton)" opacity=".35"/>
+            <g class="twirl"><path d="M878 370 L878 304 Q905 284 932 304 L932 370" fill="none" stroke="url(#dBrass)" stroke-width="4.5" stroke-linecap="round"/></g>
+            <circle cx="905" cy="431" r="11" fill="url(#dWood)" stroke="#2A1A0D" stroke-width="1.5"/>
+            <rect x="896" y="444" width="18" height="8" fill="url(#dIron)"/>
+
+            <!-- callouts -->
+            <g font-size="13.5" font-weight="600" fill="#F3E9D6">
+              <g><circle cx="40" cy="96" r="13" fill="#E3AE5E"/><text x="40" y="101" fill="#1A140D" text-anchor="middle" font-size="13">1</text><text x="60" y="101">Water wheel</text></g>
+              <g><circle cx="434" cy="200" r="13" fill="#E3AE5E"/><text x="434" y="205" fill="#1A140D" text-anchor="middle" font-size="13">2</text><text x="454" y="205">Gears</text></g>
+              <g><circle cx="704" cy="118" r="13" fill="#E3AE5E"/><text x="704" y="123" fill="#1A140D" text-anchor="middle" font-size="13">3</text><text x="724" y="123">Roving bobbin</text></g>
+              <g><circle cx="790" cy="166" r="13" fill="#E3AE5E"/><text x="790" y="171" fill="#1A140D" text-anchor="middle" font-size="13">4</text><text x="810" y="171">Drafting rollers</text></g>
+              <g><circle cx="650" cy="312" r="13" fill="#E3AE5E"/><text x="650" y="317" fill="#1A140D" text-anchor="middle" font-size="13">5</text><text x="670" y="317">Weights</text></g>
+              <g><circle cx="856" cy="356" r="13" fill="#E3AE5E"/><text x="856" y="361" fill="#1A140D" text-anchor="middle" font-size="13">6</text><text x="838" y="361" text-anchor="end">Flyer &amp; bobbin</text></g>
+            </g>
+            <text x="640" y="430" font-size="12" fill="#C9BBA2" font-style="italic">belt &amp; drum</text>
+          </svg>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li><b>The river turns the wheel</b>Flowing water pushes the wooden paddles. No horses, no people turning cranks.</li>
+        <li><b>Gears pass the power on</b>The axle runs through the mill wall to big gears that speed the motion up.</li>
+        <li><b>Roving feeds in</b>A loose, fluffy rope of cleaned cotton unwinds from a bobbin at the top.</li>
+        <li><b>Rollers stretch it</b>Each roller pair turns faster than the last, pulling the cotton thinner and thinner.</li>
+        <li><b>Weights hold it tight</b>Hanging iron weights press the top rollers down so the cotton can't slip.</li>
+        <li><b>The flyer twists and winds</b>The spinning flyer adds twist for strength and winds the thread onto a bobbin.</li>
+      </ol>
+
+      <figure class="photo">
+        <img src="img/water-frame-museum.jpg" alt="A real wooden water frame in a museum, with four bobbins of white cotton at the top, iron rollers in the middle, and four spindles at the bottom" width="1280" height="960" loading="lazy">
+        <figcaption style="margin:0">
+          <h3>The real machine</h3>
+          <ul>
+            <li><b>Top:</b> four bobbins of fluffy roving.</li>
+            <li><b>Middle:</b> the drafting rollers, with gears on the left.</li>
+            <li><b>Bottom:</b> four spindles with flyers, winding finished thread.</li>
+            <li><b>Behind it:</b> the big gears that bring power from the wheel.</li>
+          </ul>
+          An Arkwright water frame at the Museum of Science and Industry, Manchester. Photo by Clem Rutter, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Arkwright%27s_Water_Frame_MOSI-11_5549.JPG">Wikimedia Commons</a>.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="part" id="gains">
+    <div class="wrap">
+      <p class="eyebrow">Improvements</p>
+      <h2>One spinner, one thread. One frame, ninety-six.</h2>
+      <p class="prose">Press the button to watch the bobbins fill. A hand spinner works one thread at a time. A large water frame runs 96 spindles at once, all powered by the same river.</p>
+
+      <div class="race">
+        <div class="lane">
+          <h3>Spinning wheel <span>1 spindle</span></h3>
+          <div class="rack one" id="rackOne"></div>
+          <div class="count"><span id="handCount">0</span><small>threads</small></div>
+        </div>
+        <div class="lane">
+          <h3>Water frame <span>96 spindles</span></h3>
+          <div class="rack" id="rack96"></div>
+          <div class="count"><span id="frameCount">0</span><small>threads</small></div>
+        </div>
+      </div>
+      <div class="race-ctrl">
+        <button class="toggle alt" type="button" id="raceBtn">Open the sluice gate</button>
+        <p>Same river, same building, a lot more thread.</p>
+      </div>
+
+      <div class="cols">
+        <div><h3>Stronger thread</h3><p>Rollers and steady twist make thread tough enough for warp. For the first time, Britain can weave cloth that is 100% cotton.</p></div>
+        <div><h3>Never gets tired</h3><p>Water doesn't need breaks. The mill can run long shifts and keep the machines turning.</p></div>
+        <div><h3>Anyone can run it</h3><p>Years of spinning skill aren't needed. Workers learn to tie broken threads and swap bobbins in days.</p></div>
+        <div><h3>Cheaper cloth</h3><p>More thread at a lower cost means cotton shirts, sheets, and dresses that ordinary families can afford.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="market">
+    <div class="wrap">
+      <p class="eyebrow">Our market</p>
+      <h2>Who buys? Everyone who wears clothes.</h2>
+      <p class="prose">We make money three ways: we sell thread, we license our frames to other mill owners, and we build more mills of our own.</p>
+      <div class="market">
+        <div><span class="tag">Customer</span><h3>Weavers</h3><p>Hand-loom weavers in Lancashire who are desperate for steady, strong warp thread.</p></div>
+        <div><span class="tag">Customer</span><h3>Cloth merchants</h3><p>Traders who want a reliable supply of cheap all-cotton fabric to sell across Britain.</p></div>
+        <div><span class="tag">Licensing</span><h3>Mill owners</h3><p>Businessmen who pay us a fee for the right to run our patented frames in their own mills.</p></div>
+        <div><span class="tag">Exports</span><h3>The world</h3><p>British cotton ships to Europe, the Americas, Africa, and Asia. Demand keeps growing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="impact">
+    <div class="wrap">
+      <p class="eyebrow">Impact on people</p>
+      <h2>Jobs, towns, and cheaper clothes for all</h2>
+      <div class="impact">
+        <div>
+          <ul class="plus">
+            <li><div><b>Steady jobs with a regular wage</b><span>Hundreds of people work in a single mill and get paid every week.</span></div></li>
+            <li><div><b>Whole new towns</b><span>At Cromford, Arkwright built rows of houses for his workers, plus a market and a chapel.</span></div></li>
+            <li><div><b>Affordable clothing</b><span>Light, washable cotton stops being a luxury. Families can own more than one set of clothes.</span></div></li>
+            <li><div><b>Young people learn a trade</b><span>Children and teenagers learn mill work early and bring home wages for their families.</span></div></li>
+            <li><div><b>A stronger Britain</b><span>Cotton becomes one of the country's biggest industries and exports.</span></div></li>
+          </ul>
+        </div>
+        <div class="fine">
+          <h3>The fine print</h3>
+          <p>Mill days are long, often 12 to 13 hours, and many workers are children. Some hand spinners lose work to the machines. We see these as growing pains on the way to a more productive country, and Cromford gives workers housing and a community in return.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="revolution">
+    <div class="wrap">
+      <p class="eyebrow">Fit in the Industrial Revolution</p>
+      <h2>This machine started the factory age</h2>
+      <div class="prose">
+        <p>The Industrial Revolution was the shift from making things by hand at home to making them by machine in factories. The water frame sits right at the start of it. It was too big and too heavy for a cottage, so the work moved into one large building beside a river, with workers arriving on a schedule. That is the <b>factory system</b>, and Cromford Mill (1771) is one of the first true factories in the world.</p>
+        <p>Textiles were the first industry to be mechanized, and the water frame was a key link in that chain. It solved the thread shortage, supplied the new power looms, and later ran on steam engines instead of rivers. In 1790 Samuel Slater, who had trained in an Arkwright-style mill, carried the design to America and built Slater Mill in Rhode Island.</p>
+      </div>
+      <figure class="wide">
+        <img src="img/cromford-mill.jpg" alt="Arkwright's first mill at Cromford today: a long stone building with three rows of small-paned windows" width="1000" height="517" loading="lazy">
+        <figcaption>Arkwright's first Cromford mill (1771) still stands in Derbyshire. Today it is part of a UNESCO World Heritage Site. Photo: public domain, via <a href="https://commons.wikimedia.org/wiki/File:Cromford_1771_mill.jpg">Wikimedia Commons</a>.</figcaption>
+      </figure>
+      <div class="timeline-scroll">
+        <div class="timeline">
+          <div class="ev"><b>1733</b>Flying shuttle speeds up weaving</div>
+          <div class="ev"><b>1764</b>Spinning jenny, hand-powered</div>
+          <div class="ev us"><b>1769</b>Water frame patented</div>
+          <div class="ev us"><b>1771</b>Cromford Mill opens</div>
+          <div class="ev"><b>1779</b>Crompton's spinning mule</div>
+          <div class="ev"><b>1785</b>Cartwright's power loom</div>
+          <div class="ev"><b>1790</b>Slater Mill brings it to the USA</div>
+          <div class="ev"><b>1793</b>Cotton gin boosts cotton supply</div>
+        </div>
+      </div>
+      <p class="say"><small>Line to say out loud</small>The steam engine gets the fame, but the factory was born beside a river, built around our machine.</p>
+    </div>
+  </section>
+
+  <section class="part" id="ask">
+    <div class="wrap">
+      <p class="eyebrow">The ask</p>
+      <h2>Sharks, harness the river with us</h2>
+      <div class="cert">
+        <div class="cert-head">
+          <div class="k">No. 001 &middot; Cromford, Derbyshire</div>
+          <div class="t">Certificate of Investment in Arkwright &amp; Co.</div>
+        </div>
+        <div class="cert-body">
+          <div>
+            <div class="big">$250,000</div>
+            <div class="for">for twenty per cent (20%) of the company</div>
+            <p>That values Arkwright &amp; Co. at $1.25 million. You get a share of thread sales, every licensing fee, and every new mill we build. We hold the patent, so competitors can't legally copy us.</p>
+          </div>
+          <div>
+            <h3>Where your money goes</h3>
+            <div class="bars">
+              <div class="bar-row"><span>Build a mill on the river</span><b>40%</b><div class="track"><div class="fill" style="width:40%"></div></div></div>
+              <div class="bar-row"><span>Build &amp; install frames</span><b>30%</b><div class="track"><div class="fill" style="width:30%"></div></div></div>
+              <div class="bar-row"><span>Hire &amp; train workers, build housing</span><b>15%</b><div class="track"><div class="fill" style="width:15%"></div></div></div>
+              <div class="bar-row"><span>Defend our patent</span><b>15%</b><div class="track"><div class="fill" style="width:15%"></div></div></div>
+            </div>
+          </div>
+        </div>
+        <svg class="seal" viewBox="0 0 92 92" aria-hidden="true">
+          <path d="M46 2 L54 10 L65 6 L69 17 L80 19 L79 30 L89 36 L84 46 L89 56 L79 62 L80 73 L69 75 L65 86 L54 82 L46 90 L38 82 L27 86 L23 75 L12 73 L13 62 L3 56 L8 46 L3 36 L13 30 L12 19 L23 17 L27 6 L38 10 Z" fill="#8E2A22"/>
+          <circle cx="46" cy="46" r="30" fill="none" stroke="#E7B9A6" stroke-width="1.2"/>
+          <text x="46" y="44" text-anchor="middle" font-family="IM Fell English SC, Georgia, serif" font-size="17" fill="#F6DDD0">A &amp; Co</text>
+          <text x="46" y="61" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#F6DDD0">1771</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="questions">
+    <div class="wrap">
+      <p class="eyebrow">Ready for the sharks</p>
+      <h2>Questions they might ask</h2>
+      <div class="qa">
+        <details><summary>What happens if the river runs low or freezes?</summary><p>Mills are built with a mill pond and channels to store and control the water. And the frame doesn't care what turns it: it can run on a horse wheel or a steam engine too. Arkwright mills later did exactly that.</p></details>
+        <details><summary>Why not just buy spinning jennies?</summary><p>A jenny still needs a person turning the handle, and its thread is too weak for warp. Our frame runs on water and makes strong thread. The two actually work well together: jenny thread for weft, our thread for warp.</p></details>
+        <details><summary>Isn't your thread kind of coarse?</summary><p>It's thicker than the finest hand-spun yarn, but that's exactly what strong warp thread needs to be. For everyday cotton cloth, strength matters more than fineness.</p></details>
+        <details><summary>Didn't someone else come up with this idea?</summary><p>A man named Thomas Highs claimed he had a similar idea first. But Arkwright and Kay built a working machine, patented it in 1769, and turned it into a real business. Ideas are cheap. Working mills are not.</p></details>
+        <details><summary>Who actually runs the machines?</summary><p>Mostly unskilled workers, including young people, who tie broken threads and change bobbins. Training takes days, not years, so we can hire fast and grow fast.</p></details>
+        <details><summary>How do you make your money back?</summary><p>Thread sales from our own mills, plus licensing fees from every other mill owner who wants to use our patented frame. One machine design, many sources of income.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Arkwright &amp; Co. &middot; Industrial Revolution Shark Tank pitch</span>
+    <span>Photos: Arkwright portrait and Cromford Mill are public domain; water frame photo by Clem Rutter, CC BY 3.0. All via Wikimedia Commons.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  // Wooden water wheel: two rims, spokes, radial paddle boards
+  function wheel(g, cx, cy, r, o) {
+    var rimW = o.rimW, n = o.paddles;
+    el('circle', { cx: cx, cy: cy, r: r + o.paddleLen * 0.5, fill: 'none', stroke: 'transparent', 'stroke-width': 1 }, g);
+    for (var i = 0; i < n; i++) {
+      var a = i * 360 / n;
+      el('rect', { x: cx - o.paddleW / 2, y: cy - r - o.paddleLen * 0.5, width: o.paddleW, height: o.paddleLen,
+        fill: o.board, stroke: o.dark, 'stroke-width': 1, transform: 'rotate(' + a + ' ' + cx + ' ' + cy + ')' }, g);
+    }
+    el('circle', { cx: cx, cy: cy, r: r, fill: 'none', stroke: o.rim, 'stroke-width': rimW }, g);
+    el('circle', { cx: cx, cy: cy, r: r - rimW * 1.6, fill: 'none', stroke: o.rim, 'stroke-width': rimW * 0.6 }, g);
+    for (var s = 0; s < o.spokes; s++) {
+      var b = s * Math.PI * 2 / o.spokes;
+      el('line', { x1: cx + Math.cos(b) * 14, y1: cy + Math.sin(b) * 14, x2: cx + Math.cos(b) * (r - rimW / 2), y2: cy + Math.sin(b) * (r - rimW / 2),
+        stroke: o.rim, 'stroke-width': o.spokeW, 'stroke-linecap': 'round' }, g);
+    }
+    el('circle', { cx: cx, cy: cy, r: 24, fill: o.rim, stroke: o.dark, 'stroke-width': 2 }, g);
+  }
+
+  // Toothed gear
+  function gear(g, cx, cy, r, teeth, depth, fill) {
+    var d = '', step = Math.PI * 2 / teeth;
+    for (var i = 0; i < teeth; i++) {
+      var a = i * step;
+      var pts = [[a, r - depth], [a + step * 0.18, r], [a + step * 0.5, r], [a + step * 0.68, r - depth]];
+      pts.forEach(function (p, j) {
+        var x = (cx + Math.cos(p[0]) * p[1]).toFixed(1), y = (cy + Math.sin(p[0]) * p[1]).toFixed(1);
+        d += (i === 0 && j === 0 ? 'M' : 'L') + x + ' ' + y + ' ';
+      });
+    }
+    el('path', { d: d + 'Z', fill: fill, stroke: '#1E1A16', 'stroke-width': 1.2 }, g);
+    el('circle', { cx: cx, cy: cy, r: r * 0.62, fill: 'none', stroke: '#1E1A16', 'stroke-opacity': .5, 'stroke-width': 1.5 }, g);
+    for (var k = 0; k < 4; k++) {
+      var b = k * Math.PI / 2;
+      el('line', { x1: cx, y1: cy, x2: cx + Math.cos(b) * r * 0.6, y2: cy + Math.sin(b) * r * 0.6, stroke: '#1E1A16', 'stroke-opacity': .45, 'stroke-width': 3 }, g);
+    }
+  }
+
+  // Hero wheel
+  wheel(document.getElementById('heroWheel'), 660, 510, 128, {
+    rimW: 12, paddles: 24, paddleW: 9, paddleLen: 36, spokes: 10, spokeW: 7,
+    rim: 'url(#hWood)', board: '#4A3220', dark: '#1A120A'
+  });
+
+  // Hero windows: five storeys, warm lamplight in most
+  var win = document.getElementById('heroWindows');
+  var refl = document.getElementById('heroReflect');
+  var seed = 7;
+  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  for (var row = 0; row < 5; row++) {
+    for (var col = 0; col < 15; col++) {
+      if (row === 4 && (col === 7)) continue;
+      var x = 842 + col * 35.5, y = 282 + row * 56, lit = rnd() > 0.28;
+      if (lit) {
+        el('rect', { x: x - 4, y: y - 4, width: 26, height: 36, fill: '#F6B55A', opacity: .35, filter: 'url(#hGlow)' }, win);
+        el('rect', { x: x, y: y, width: 18, height: 28, fill: rnd() > .5 ? '#F7C676' : '#EFA94F', class: rnd() > .7 ? 'flicker' : '' }, win);
+        if (row >= 2) el('rect', { x: x + 2, y: 600 + (4 - row) * 16, width: 14, height: 30, fill: '#F2B25C' }, refl);
+      } else {
+        el('rect', { x: x, y: y, width: 18, height: 28, fill: '#221E1A' }, win);
+      }
+      el('path', { d: 'M' + (x + 9) + ' ' + y + ' V' + (y + 28) + ' M' + x + ' ' + (y + 14) + ' H' + (x + 18), stroke: '#2B241D', 'stroke-width': 1.5 }, win);
+    }
+  }
+
+  // Diagram parts
+  wheel(document.getElementById('dWheel'), 170, 300, 128, {
+    rimW: 11, paddles: 20, paddleW: 9, paddleLen: 34, spokes: 8, spokeW: 7,
+    rim: 'url(#dWood)', board: '#6E4A2A', dark: '#2A1A0D'
+  });
+  gear(document.getElementById('dPit'), 476, 300, 62, 30, 8, 'url(#dBrass)');
+  gear(document.getElementById('dPinion'), 560, 300, 24, 12, 7, 'url(#dIron)');
+  gear(document.getElementById('dDrum'), 706, 420, 28, 16, 4, 'url(#dWood)');
+
+  var rollers = document.getElementById('dRollers');
+  [[720, 's6'], [790, 's4'], [860, 's2']].forEach(function (r) {
+    var top = el('g', { class: 'spin ' + r[1] }, rollers);
+    el('circle', { cx: r[0], cy: 205, r: 14, fill: 'url(#dLeather)', stroke: '#2A1A0D', 'stroke-width': 1.5 }, top);
+    el('line', { x1: r[0] - 9, y1: 205, x2: r[0] + 9, y2: 205, stroke: '#2A1A0D', 'stroke-width': 1.5 }, top);
+    var bot = el('g', { class: 'spin cw ' + r[1] }, rollers);
+    el('circle', { cx: r[0], cy: 233, r: 14, fill: 'url(#dIron)', stroke: '#1E1E1E', 'stroke-width': 3, 'stroke-dasharray': '2.5 2' }, bot);
+    el('line', { x1: r[0], y1: 224, x2: r[0], y2: 242, stroke: '#2A2A2A', 'stroke-width': 1.5 }, bot);
+  });
+
+  // Motion toggle
+  var btn = document.getElementById('diagramToggle');
+  var diagram = document.getElementById('diagram');
+  btn.addEventListener('click', function () {
+    var paused = diagram.classList.toggle('paused');
+    btn.textContent = paused ? 'Start the river' : 'Stop the river';
+    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  });
+
+  // Bobbin race
+  function makeBob(parent) {
+    var b = document.createElement('div');
+    b.className = 'bob';
+    b.innerHTML = '<i class="t"></i><u></u><i class="b"></i>';
+    parent.appendChild(b);
+    return b;
+  }
+  var one = makeBob(document.getElementById('rackOne'));
+  var rack = document.getElementById('rack96');
+  var bobs = [];
+  for (var i = 0; i < 96; i++) bobs.push(makeBob(rack));
+  var handCount = document.getElementById('handCount');
+  var frameCount = document.getElementById('frameCount');
+  var raceBtn = document.getElementById('raceBtn');
+  var running = false;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  raceBtn.addEventListener('click', function () {
+    if (running) return;
+    bobs.forEach(function (b) { b.classList.remove('on'); });
+    one.classList.remove('on');
+    void rack.offsetWidth;
+    one.classList.add('on');
+    handCount.textContent = '1';
+    frameCount.textContent = '0';
+    if (reduce) {
+      bobs.forEach(function (b) { b.classList.add('on'); });
+      frameCount.textContent = '96';
+      raceBtn.textContent = 'Run it again';
+      return;
+    }
+    running = true;
+    var n = 0;
+    var t = setInterval(function () {
+      bobs[n].classList.add('on');
+      n++;
+      frameCount.textContent = String(n);
+      if (n >= 96) { clearInterval(t); running = false; raceBtn.textContent = 'Run it again'; }
+    }, 18);
+  });
+})();
+</script>
+
+</html>
